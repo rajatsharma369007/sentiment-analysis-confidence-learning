@@ -173,11 +173,13 @@ def crossval(args, dm):
         dl_train = DataLoader(
             train_dataset,
             shuffle=True,
-            batch_size=args.batch_size)
+            batch_size=args.batch_size,
+            drop_last=True)
         df_test = DataLoader(
             test_dataset,
-            shuffle=True,
-            batch_size=args.batch_size)
+            shuffle=False,
+            batch_size=args.batch_size,
+            drop_last=True)
 
         # Create a ModelCheckpoint callback for saving the best model during
         # training
